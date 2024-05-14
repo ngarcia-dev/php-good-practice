@@ -20,7 +20,7 @@ class ConnectionDB extends PDO {
         $conn = new ConnectionDB(
           'pgsql',
           getenv('DB_HOST'),
-          getenv('DB_DATABASE'),
+          getenv('DB_NAME'),
           getenv('DB_USER'),
           getenv('DB_PASS')
         );

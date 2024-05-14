@@ -20,3 +20,8 @@ Para probar el proyecto en desarrollo, se puede usar el siguiente comando:
 ```bash
 php -S localhost:8000
 ```
+Tener instalado las extensiones de php para postgresql:
+
+```bash
+sudo apt-get install php8.2-pdo-pgsql php8.2-pgsql
+```
