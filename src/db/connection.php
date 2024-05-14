@@ -1,7 +1,7 @@
 <?php
+declare(strict_types=1);
 
 // Connection to the database postgresql using PDO
-
 class ConnectionDB extends PDO {
     public function __construct
     (
@@ -14,24 +14,27 @@ class ConnectionDB extends PDO {
         $dns = $this->engine . ':host=' . $this->host . ';dbname=' . $this->database;
         parent::__construct($dns, $this->user, $this->password);
     }
+
+    public static function connection(): ConnectionDB
+    {
+        $conn = new ConnectionDB(
+          'pgsql',
+          getenv('DB_HOST'),
+          getenv('DB_DATABASE'),
+          getenv('DB_USER'),
+          getenv('DB_PASS')
+        );
+        echo $conn->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
+        return $conn;
+    }
 }
 
-$host = getenv('DB_HOST');
-$database = getenv('DB_DATABASE');
-$user = getenv('DB_USER');
-$password = getenv('DB_PASS');
-
-$connection = new ConnectionDB('pgsql', $host, $database, $user, $password);
-echo $connection->getAttribute(PDO::ATTR_CONNECTION_STATUS);
-
-$query = "SELECT * FROM admin_usuarios";
-
-foreach ($connection->query($query) as $row) {
-    print_r($row);
-}
-
-// Alternative way to query the database using fetch method
-$result = $connection->query($query);
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-     print_r($row);
-}
+//$connection = ConnectionDB::connection();
+//
+//$query = "SELECT * FROM admin_usuarios";
+//$result = $connection->query($query);
+//$tickets = [];
+//while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+//    $tickets[] = $row;
+//}
+//print_r($tickets);
