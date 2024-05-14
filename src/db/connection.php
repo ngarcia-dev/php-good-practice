@@ -28,13 +28,3 @@ class ConnectionDB extends PDO {
         return $conn;
     }
 }
-
-//$connection = ConnectionDB::connection();
-//
-//$query = "SELECT * FROM admin_usuarios";
-//$result = $connection->query($query);
-//$tickets = [];
-//while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-//    $tickets[] = $row;
-//}
-//print_r($tickets);
