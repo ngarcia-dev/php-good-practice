@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__. '/../..');
 $dotenv->load();
 
 // Connection to the database postgresql using PDO
@@ -23,10 +23,10 @@ class ConnectionDB extends PDO {
     {
         $conn = new ConnectionDB(
           'pgsql',
-          getenv('DB_HOST'),
-          getenv('DB_NAME'),
-          getenv('DB_USER'),
-          getenv('DB_PASS')
+          $_ENV['DB_HOST'],
+          $_ENV['DB_NAME'],
+          $_ENV['DB_USER'],
+          $_ENV['DB_PASS']
         );
         echo $conn->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
         return $conn;
