@@ -1,5 +1,9 @@
 <?php
 declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 // Connection to the database postgresql using PDO
 class ConnectionDB extends PDO {
