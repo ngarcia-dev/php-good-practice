@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 // Call the model
-require_once 'model/user.model.php';
+require_once 'model/user.php';
 $users = User::getAllUsers();
 
 // Call the view
-require_once 'views/user.view.php';
+require_once 'views/user.php';

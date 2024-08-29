@@ -1,4 +1,4 @@
 <?php
 
 require_once 'db/connection.php';
-require_once 'controller/user.controller.php';
+require_once 'controller/user.php';
