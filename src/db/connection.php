@@ -21,6 +21,7 @@ class ConnectionDB extends PDO {
 
     public static function connection(): ConnectionDB
     {
+      try {
         $conn = new ConnectionDB(
           'pgsql',
           $_ENV['DB_HOST'],
@@ -30,5 +31,8 @@ class ConnectionDB extends PDO {
         );
         echo $conn->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
         return $conn;
+      } catch (PDOException $e) {
+        echo $e->getMessage();
+      }
     }
 }
